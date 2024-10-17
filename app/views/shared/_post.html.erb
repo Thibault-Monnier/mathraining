@@ -53,16 +53,16 @@
   <% if can_edit %>
     <div class="modify">
       <% if kind == "message" %>
-        <a href='#' onclick='return Rolling.develop("<%= postfix %>", true)' id='LinkEdit<%= postfix %>'>Modifier ce message</a>
         <% unless ms.erased? %>
-          | <%= link_to "Supprimer ce message", message_soft_destroy_path(ms), method: :put, id: "LinkSoftDelete#{ postfix }", data: { confirm: "Êtes-vous sûr de vouloir supprimer ce message ?" } %>
+          <a href='#' onclick='return Rolling.develop("<%= postfix %>", true)' id='LinkEdit<%= postfix %>'>Modifier ce message</a>
+          <%= link_to "Supprimer ce message", message_soft_destroy_path(ms), method: :put, id: "LinkSoftDelete#{ postfix }", data: { confirm: "Êtes-vous sûr de vouloir supprimer ce message ?" } %>
         <% end %>
         <% if current_user.sk.admin? %>
-           | <%= link_to "Supprimer totalement ce message", message_path(ms), method: :delete, id: "LinkDelete#{ postfix }", data: { confirm: "Êtes-vous sûr de vouloir supprimer ce message ?" }  %>
+          <%= link_to "Supprimer totalement ce message", message_path(ms), method: :delete, id: "LinkDelete#{ postfix }", data: { confirm: "Êtes-vous sûr de vouloir supprimer ce message ?" }  %>
         <% end %>
       <% elsif kind == "contestsolution" %>
         <a href='#' onclick='return Rolling.develop("")'>Modifier la solution</a>
-        | <%= link_to "Supprimer la solution", contestsolution_path(ms), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette solution ?" }  %>
+        <%= link_to "Supprimer la solution", contestsolution_path(ms), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette solution ?" }  %>
       <% elsif kind == "contestcorrection" %>
         <a href='#' onclick='return Rolling.develop("")'>
         <% if !ms.contestsolution.official? %>
@@ -73,7 +73,7 @@
         </a>
       <% elsif kind == "submission_in_test" %>
         <a href='#' onclick='return Rolling.develop("")'>Modifier la solution</a>
-        | <%= link_to "Supprimer la solution", submission_path(@submission), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette solution ?" } %>
+        <%= link_to "Supprimer la solution", submission_path(@submission), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cette solution ?" } %>
       <% end %>
     </div>
   <% end %>

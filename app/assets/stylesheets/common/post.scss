@@ -54,7 +54,23 @@
   overflow-x: auto;
 }
 
-.post > .modify {
-  text-align: center;
+.modify {
+  display: flex;
+  justify-content: center;
   padding: 0.5rem;
+
+  > a {
+    &:not(:last-child) {
+      &::after {
+        content: '|';
+        margin-left: 0.25rem;
+        color: var(--bs-body-color);
+        text-decoration: none;
+      }
+    }
+    
+    &:not(:first-child) {
+      margin-left: 0.25rem;
+    }
+  }
 }
